@@ -1,0 +1,37 @@
+# Installation notes local:
+
+https://github.com/allenai/allennlp/blob/master/README.md#installation
+
+It was necessary to update conda for it to work. Also init the bash shell:
+
+conda init bash
+conda create -n allennlp python=3.6
+conda activate allennlp
+
+# Peregrine installation notes:
+
+First load Anaconda module
+	module load Anaconda3
+
+Need to install with --user and need to add /home/p266548/.local/bin/ to $PATH in .bashrc
+When running a shell script (e.g. pipeline.sh), add:
+	module load Anaconda3
+	. /software/software/Anaconda3/5.3.0/etc/profile.d/conda.sh
+	conda activate allennlp
+
+# Generating config files you can do interactively in the browser
+
+# Run this on local pc (not peregrine):
+	allennlp configure
+# Then go to browser 
+http://localhost:8123/
+
+Note that for embedding you have to fill something in for the empty text field ("tokens")
+There can be more issues with the interactive config file, just check error messages
+
+Train as:
+
+allennlp train $JSON_FILE -s $EXP_FOLDER
+
+# For creating a new model, make sure it is registered, but also imported in the __init__.py file in the model directory
+/home/p266548/anaconda3/envs/allennlp/lib/python3.6/site-packages/allennlp/models/encoder_decoders/__init__.py (for example)

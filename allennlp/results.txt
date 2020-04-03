@@ -1,0 +1,40 @@
+dk_bert.json                   Accuracy: 0.8547297297297297 ~ 0.85
+       (rmsprop optimizer)     Accuracy: 0.9290540540540541 ~ 0.93
+
+en_bert.json                   Accuracy: 0.8141993957703928 ~ 0.81
+       (rmsprop optimizer)     Accuracy: 0.8013595166163142 ~ 0.80
+
+en_lstm_bert.json              Accuracy: 0.8043806646525680
+en_lstm_bert_glove.json        Accuracy: 0.7938066465256798
+
+gr_bert.json                   Accuracy: 0.7249712313003452 ~ 0.72
+       (rmsprop optimizer)     Accuracy: 0.8377445339470656 ~ 0.84
+
+tu_bert.json                   Accuracy: 0.8091939546599496 ~ 0.81
+       (rmsprop optimizer)     Accuracy: 0.8397355163727960 ~ 0.84
+
+ar_bert.json                   Accuracy: 0.8071428571428572 ~ 0.81
+       (rmsprop optimizer)     Accuracy: 0.8457142857142858 ~ 0.85
+
+
+with pos_label='NOT'
+
+File:  . configs/ar_bert.json
+Accuracy: 0.8457142857142858
+F1: 0.9081632653061223
+
+File:  . configs/dk_bert.json
+Accuracy: 0.9290540540540541
+F1: 0.9598470363288719
+
+File:  . configs/en_bert.json
+Accuracy: 0.8119335347432024
+F1: 0.864452912357104
+
+File:  . configs/gr_bert.json
+Accuracy: 0.8377445339470656
+F1: 0.8912875867386275
+
+File:  . configs/tu_bert.json
+Accuracy: 0.839735516372796
+F1: 0.9094144865634455

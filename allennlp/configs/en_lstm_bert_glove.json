@@ -1,0 +1,87 @@
+{
+    "dataset_reader": {
+        "type": "text_classification_json",
+        "token_indexers": {
+            "bert": {
+                "type": "bert-pretrained",
+                "pretrained_model": "bert-base-uncased",
+                "use_starting_offsets": true,
+                "do_lowercase": true
+            },
+            "tokens": {
+				"type": "single_id",
+				"lowercase_tokens": true
+			},
+        },
+        "tokenizer": {
+            "type": "word",
+            "word_splitter": {
+                "type": "spacy",
+                "language": "en_core_web_sm",
+                "pos_tags": true,
+            },
+            "word_stemmer": {
+                "type": "porter"
+            }
+        },
+        "segment_sentences": false,
+        "skip_label_indexing": false,
+    },
+    "train_data_path": "data/english/training_data.json",
+    "validation_data_path": "data/english/dev_data.json",
+    "model": {
+        "type": "basic_classifier",
+        "text_field_embedder": {
+            "type": "basic",
+            "token_embedders": {
+                "tokens": {
+                    "type": "embedding",
+                    "pretrained_file": "https://allennlp.s3.amazonaws.com/datasets/glove/glove.840B.300d.lower.converted.zip",
+                    "embedding_dim": 300,
+                    "trainable": true,
+                    "norm_type": 2,
+                    "scale_grad_by_freq": false,
+                    "sparse": false
+                },
+                "bert": {
+                    "type": "bert-pretrained",
+                    "pretrained_model": "bert-base-uncased",
+                    "requires_grad": true,
+                    "top_layer_only": false
+                },
+                
+            },
+            "allow_unmatched_keys": true,
+            "embedder_to_indexer_map": {
+            "bert": ["bert", "bert-offsets"],
+            "tokens": ["tokens"]
+			},
+        },
+        "seq2vec_encoder": {
+            "type": "lstm",
+            "input_size": 1068,
+            "hidden_size": 300,
+            "num_layers": 1,
+            "bias": true,
+            "batch_first": true,
+            "dropout": 0.1,
+            "bidirectional": true
+        },
+        "dropout": 0.1
+    },
+    "iterator": {
+        "type": "basic",
+        "batch_size": 12
+    },
+    "trainer": {
+        "optimizer": {
+            "type": "bert_adam",
+            "lr": 2e-5
+        },
+        "validation_metric": "-loss",
+        "shuffle": true,
+        "num_epochs": 1,
+        "num_serialized_models_to_keep": -1,
+        "cuda_device": 0
+    },
+}
