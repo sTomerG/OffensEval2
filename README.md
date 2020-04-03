@@ -1,4 +1,4 @@
 # OffensEval2
-Final BERT model used to classify offensive language in social media posts
+Final BERT model used to classify offensive language in social media posts in Danish, Greek Turkish and Arabic.
 
-In collaboration with Alexander Lukjanenkovs and Franka Korpel.
+In collaboration with Alexander Lukjanenkovs (MrAlexDeluxe) and Franka Korpel (frankafranka).
